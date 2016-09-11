@@ -5,13 +5,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>DiversiParty</title>
   <% include ../partials/head.ejs %>
+  <script type="text/javascript" src="/js/parties/new.js" async defer></script>
+  <link rel="stylesheet" href="/css/parties/new.css">
 </head>
 <body>
 
   <% include ../partials/header.ejs %>
 
   <div id="container">
-    
+    <h1>Host a party!</h1>
+    <div class="form">
+      <input type="text" name="name" placeholder="Party Name">
+      <input type="text" name="location" placeholder="Party Location">
+      <select>
+        <option value="" disabled selected>Party Type</option>
+        <option value="College Brochure">College Brochure</option>
+        <option value="Actual College Party">Actual College Party</option>
+        <option value="Eastern-European Biker Bar">Eastern European Biker Bar</option>
+        <option value="DnD Basement">DnD Basement</option>
+        <option value="Quincinera">Quincinera</option>
+        <option value="Werewolf Bar Mitzvah">Werewolf Bar Mitzvah</option>
+        <option value="Holiday Office Party">Holiday Office Party</option>
+        <option value="Resort Luau">Resort Luau</option>
+        <option value="Noon Tea Party">Noon Tea Party</option>
+        <option value="TechCrunch Disrupt">TechCrunch Disrupt</option>
+      </select>
+      <input type="date" name="party_date" placeholder="Party Date (YYYY-MM-DD)">
+      <input type="time" name="party_time" placeholder="Party Time (HH:MM:SS)">
+      <input type="submit" value="Submit">
+    </div>
   </div>
 
   <% include ../partials/footer.ejs %>

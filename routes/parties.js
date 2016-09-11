@@ -9,12 +9,13 @@ router.get('/',getAllParties,(req,res) => {
   res.render('parties/index', {parties: res.rows})
 })
 
-router.get('/:id',getParty,(req,res) => {
-  res.render('parties/show')
-})
 
 router.get('/new',(req,res) => {
   res.render('parties/new')
+})
+
+router.get('/:id',getParty,(req,res) => {
+  res.render('parties/show')
 })
 
 router.post('/',createParty,(req,res) => {
