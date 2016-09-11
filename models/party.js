@@ -11,9 +11,26 @@ function getAllParties(req,res,next){
     });
 }
 
+
 function getParty(req,res,next){
-  db.one(`SELECT * FROM parties INNER JOIN users on parties.host_id = users.user_id WHERE party_id=${req.params.id}`)
+  function translateParty(party_type){
+    let parties = {
+      "College Brochure": "8-guys 8-girls",
+      "Actual College Party": "",
+      "Eastern-European Biker Bar": "",
+      "DnD Basement": "",
+      "Quincenera": "",
+      "Werewolf Bar Mitzvah": "",
+      "Holiday Office Party": "",
+      "Resort Luau": "",
+      "Noon Tea Party": "",
+      "TechCrunch Disrupt": ""
+    }
+    return parties[party_type]
+  }
+  db.one(`SELECT * FROM parties INNER JOIN users on parties.host_id = users.user_id WHERE party_id=$1`,[req.params.id])
     .then( data => {
+      res.party_filter = translateParty("College Brochure");
       res.row = data;
       next();
     })

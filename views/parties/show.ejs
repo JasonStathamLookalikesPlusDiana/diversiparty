@@ -20,9 +20,14 @@
       <h3><%= party.party_date %> <%= party.party_time %></h3>
 
       <div id="scroll">
-
+      <h3>Attendees</h3>
+        <%= filter %>
       </div>  
-        
+      
+      <form method="post" action="/parties/<%=party.party_id%>">
+        <input type="submit" name="Join the Party!">
+      </form>
+
     </section>
   </div>
 
