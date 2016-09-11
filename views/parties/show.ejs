@@ -5,13 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>DiversiParty!</title>
   <% include ../partials/head.ejs %>
+  <link rel="stylesheet" type="text/css" href="/css/parties/show.css">
 </head>
 <body>
 
   <% include ../partials/header.ejs %>
 
   <div id="container">
-  
+    <h1>Join this party</h1>
+    <section>
+      <h3>Host:</h3>
+      <img src="<%= party.image_url%>">
+      <h3><%= party.location %></h3>
+      <h3><%= party.party_date %> <%= party.party_time %></h3>
+
+      <div id="scroll">
+      <h3>Attendees</h3>
+        <%= filter %>
+      </div>  
+      
+      <form method="post" action="/parties/<%=party.party_id%>">
+        <input type="submit" name="Join the Party!">
+      </form>
+
+    </section>
   </div>
 
   <% include ../partials/footer.ejs %>

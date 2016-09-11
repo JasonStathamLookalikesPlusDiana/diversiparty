@@ -29,14 +29,16 @@ function getUser(req,res,next) {
 }
 
 function findUserIDByUsername(req,res,next) {
-  if(req.session.user) {
+  if(req.session.name) {
     console.log('In findUserIDByUsername, req.session.user: ', req.session.user);
     db.one(`SELECT user_id
             FROM users
             WHERE username=$1`,
-            [req.session.user])
+            [req.session.name])
       .then( data => {
-        res.userID = data.user_id;
+        console.log(39,data);
+        req.session.userID = data.user_id;
+        req.session.party = {};
         next();
       })
       .catch( error => {
@@ -67,11 +69,9 @@ function createUser(req,res,next) {
             req.body.description])
       .then( data => {
         console.log('Successfully added new entry');
-        req.session.user = {
-          name: req.body.user,
-          image: req.body.image,
-          description: req.body.description
-        }
+        req.session.name = req.body.user;
+        req.session.image = req.body.image;
+        req.session.description = req.body.description;
         next();
       })
       .catch( error => {
@@ -106,7 +106,8 @@ function loginUser(req,res,next) {
 }
 
 function logoutUser(req,res,next) {
-  delete req.session.user;
+  delete req.session.name;
+  delete req.session.party;
   next();
 }
 

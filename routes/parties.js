@@ -5,17 +5,15 @@ const { getAllParties,
         joinParty } = require('../models/party');
 
 router.get('/',getAllParties,(req,res) => {
-  console.log(res.rows);
   res.render('parties/index', {parties: res.rows})
 })
-
 
 router.get('/new',(req,res) => {
   res.render('parties/new')
 })
 
 router.get('/:id',getParty,(req,res) => {
-  res.render('parties/show')
+  res.render('parties/show',{party: res.row, user: req.session, joined: req.session.party[req.params.id], filter: res.party_filter})
 })
 
 router.post('/',createParty,(req,res) => {
@@ -23,7 +21,8 @@ router.post('/',createParty,(req,res) => {
 })
 
 router.post('/:id',joinParty,(req,res) => {
-  res.redirect('/parties')
+  req.session.party[req.params.id] = true;
+  res.redirect(`/parties/${req.params.id}`)
 })
 
 
