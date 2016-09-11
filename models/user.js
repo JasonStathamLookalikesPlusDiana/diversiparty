@@ -29,12 +29,12 @@ function getUser(req,res,next) {
 }
 
 function findUserIDByUsername(req,res,next) {
-  if(req.session.name) {
+  if(req.session.user) {
     console.log('In findUserIDByUsername, req.session.user: ', req.session.user);
     db.one(`SELECT user_id
             FROM users
             WHERE username=$1`,
-            [req.session.name])
+            [req.session.user])
       .then( data => {
         console.log(39,data);
         req.session.userID = data.user_id;

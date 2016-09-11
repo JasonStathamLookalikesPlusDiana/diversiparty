@@ -75,7 +75,7 @@ function getParty(req,res,next){
 }
 
 function createParty(req,res,next){
-  console.log(req.body);
+  console.log(req.session);
   db.none(`INSERT INTO parties
            (name,location,category,party_date,party_time,host_id)
            values ($1,$2,$3,$4,$5,$6)`,

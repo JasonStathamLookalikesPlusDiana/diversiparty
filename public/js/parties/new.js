@@ -21,7 +21,7 @@
       method: 'post',
       data: values
     })
-    .then(console.log('Successfully created a party!'))
+    .then(window.location.href = '/parties')
     .error(err => console.log('Error: ',err));
   });
   
