@@ -30,12 +30,15 @@ h1 {
 img {
   width: 80px;
   height: 80px;
-  border-radius: 3px 0 0 3px;
+  border-radius: 3px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
 }
 
-img, section > section {
-  display: inline-block;
-  vertical-align: middle;
+h3 {
+  margin: 0.5em;
+  text-align: center;
 }
 
 a > section {

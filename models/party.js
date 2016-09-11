@@ -12,8 +12,14 @@ function getAllParties(req,res,next){
 }
 
 function getParty(req,res,next){
-
-  next();
+  db.one(`SELECT * FROM parties INNER JOIN users on parties.host_id = users.user_id WHERE party_id=${req.params.id}`)
+    .then( data => {
+      res.row = data;
+      next();
+    })
+    .catch( error => {
+      console.log('Error ',error);
+    });
 }
 
 function createParty(req,res,next){

@@ -34,9 +34,9 @@ function findUserIDByUsername(req,res,next) {
     db.one(`SELECT user_id
             FROM users
             WHERE username=$1`,
-            [req.session.user])
+            [req.session.user.name])
       .then( data => {
-        res.userID = data.user_id;
+        req.session.userID = data.user_id;
         next();
       })
       .catch( error => {
@@ -67,6 +67,7 @@ function createUser(req,res,next) {
             req.body.description])
       .then( data => {
         console.log('Successfully added new entry');
+        console.log(70,data);
         req.session.user = {
           name: req.body.user,
           image: req.body.image,

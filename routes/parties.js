@@ -5,12 +5,11 @@ const { getAllParties,
         joinParty } = require('../models/party');
 
 router.get('/',getAllParties,(req,res) => {
-  console.log(res.rows);
   res.render('parties/index', {parties: res.rows})
 })
 
 router.get('/:id',getParty,(req,res) => {
-  res.render('parties/show')
+  res.render('parties/show',{party: res.row, user_id: req.session.user})
 })
 
 router.get('/new',(req,res) => {
