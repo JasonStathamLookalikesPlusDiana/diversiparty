@@ -107,7 +107,7 @@ function loginUser(req,res,next) {
 
 function logoutUser(req,res,next) {
   delete req.session.name;
-  delete req.session.party;
+  req.session.party = {};
   next();
 }
 
