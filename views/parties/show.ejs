@@ -28,8 +28,8 @@
             <% let maxNum = parseInt(filter[x]) %>
             <% if (!maxNum){maxNum = 100 } %>
             <% let num = Math.floor(Math.random()*maxNum) %>
-            <% if (x==="White Guy"){num = maxNum - Math.round(Math.random())} %>
-            <% if (x==="White Guy" && joined ){num = maxNum} %>
+            <% if (x==="White Guys"){num = maxNum - Math.round(Math.random())} %>
+            <% if (x==="White Guys" && joined ){num = maxNum} %>
             <h4><%= num %>/<%= filter[x] %></h4>
           <% } %>
         </div>
