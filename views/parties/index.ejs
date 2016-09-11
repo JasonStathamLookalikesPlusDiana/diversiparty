@@ -5,13 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>DiversiParty</title>
   <% include ../partials/head.ejs %>
+  <link rel="stylesheet" type="text/css" href="css/parties/index.css">
 </head>
 <body>
 
   <% include ../partials/header.ejs %>
 
   <div id="container">
-    
+    <h1>Join a party</h1>
+    <div id="scroll">
+      <% parties.forEach(function(party){ %>
+
+        <a href="/parties/<%= party.party_id %>">
+          <section>
+            <img src="<%= party.image_url %>">
+            <section>
+              <h3><%= party.name %></h3>
+              <h3><%= party.location %></h3>
+              <h3><%= party.party_date %> <%= party.party_time %></h3>
+            </section>
+          </section>
+        </a>
+
+      <% }) %>
+    </div>
   </div>
 
   <% include ../partials/footer.ejs %>

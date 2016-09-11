@@ -4,8 +4,9 @@ const { getAllParties,
         createParty,
         joinParty } = require('../models/party');
 
-router.get('/',(req,res) => {
-  res.render('parties/index')
+router.get('/',getAllParties,(req,res) => {
+  console.log(res.rows);
+  res.render('parties/index', {parties: res.rows})
 })
 
 router.get('/:id',getParty,(req,res) => {
