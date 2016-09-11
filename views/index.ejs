@@ -4,9 +4,25 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>DiversiParty</title>
-  <link rel="stylesheet" href="">
+  <% include partials/head.ejs %>
+  <link rel="stylesheet" type="text/css" href="css/users/login.css">
 </head>
 <body>
- 
+
+  <% include partials/header.ejs %>
+
+  <div id="container">
+    <h1>Never throw another bad party!</h1>
+    <section>
+      <h1>Log In</h1>
+      <form method="post" action="/users/login">
+        <input type="text" name="user" placeholder="username">
+        <input type="password" name="pass" placeholder="password">
+        <input type="submit" value="Submit">
+      </form>
+      <a href="/users/new">Sign Up</a>
+    </section>
+  </div>
+
 </body>
 </html>

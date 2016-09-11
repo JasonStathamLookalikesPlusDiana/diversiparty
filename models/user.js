@@ -56,28 +56,23 @@ function createSecure(email, password, callBack) {
 }
 
 function createUser(req,res,next) {
-  if( req.body.password === req.body.password_confirm ) {
-    createSecure(req.body.email, req.body.password, saveUser);
-    function saveUser(hash) {
-      db.any(`INSERT INTO users 
-              (first_name, last_name, username, email, password_digest )
-              VALUES ($1, $2, $3, $4, $5);`,
-             [req.body.first_name,
-              req.body.last_name,
-              req.body.username,
-              req.body.email,
-              hash])
-        .then( data => {
-          console.log('Successfully added new entry');
-          req.session.user = req.body.username;
-          next();
-        })
-        .catch( error => {
-          console.log('Error ', error);
-        });
-    }
-  } else {
-    res.error = 'passwords must match';
+  createSecure(req.body.email, req.body.pass, saveUser);
+  function saveUser(hash) {
+    db.any(`INSERT INTO users 
+            (username, password_digest, image_url, description )
+            VALUES ($1, $2, $3, $4);`,
+           [req.body.user,
+            hash,
+            req.body.image,
+            req.body.description])
+      .then( data => {
+        console.log('Successfully added new entry');
+        req.session.user = req.body.username;
+        next();
+      })
+      .catch( error => {
+        console.log('Error ', error);
+      });
   }
 }
 
@@ -85,13 +80,13 @@ function createUser(req,res,next) {
 // Error is purposefully the same whether it's the password or the 
 // email that is incorrect
 function loginUser(req,res,next) {
-  let email    = req.body.email;
-  let password = req.body.password;
+  let user    = req.body.user;
+  let password = req.body.pass;
   db.one(`SELECT *
           FROM users
-          WHERE email=$1;`,[email])
+          WHERE username=$1;`,[user])
     .then( data => {
-      // checking if password is correct for email
+      // checking if password is correct for user
       if(bcrypt.compareSync(password, data.password_digest)) {
         res.rows = data.username;
       } else {

@@ -29,7 +29,7 @@ app.use(logger('dev'));
 app.use(methodOverride('_method'));
 
 app.use('/', homeRoute);
-app.use('/user', userRoute);
+app.use('/users', userRoute);
 app.use('/parties', partiesRoute);
 
 app.listen(port, () => {

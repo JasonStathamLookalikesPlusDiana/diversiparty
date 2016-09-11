@@ -1,19 +1,19 @@
-const router                = require('express').Router();
+const router        = require('express').Router();
 const { getAllParties,
         getParty,
         createParty,
         joinParty } = require('../models/party');
 
-router.get('/',getAllParties,(req,res) => {
-  res.render('/parties/index',{parties: XXX})
+router.get('/',(req,res) => {
+  res.render('parties/index')
 })
 
 router.get('/:id',getParty,(req,res) => {
-  res.render('/parties/show',{parties: XXX})
+  res.render('parties/show')
 })
 
 router.get('/new',(req,res) => {
-  res.render('/parties/new')
+  res.render('parties/new')
 })
 
 router.post('/',createParty,(req,res) => {

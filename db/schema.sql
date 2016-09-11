@@ -1,10 +1,11 @@
+DROP TABLE IF EXISTS parties;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY NOT NULL,
   username VARCHAR NOT NULL,
   password_digest VARCHAR NOT NULL,
-  gender_identity VARCHAR NOT NULL,
+  image_url VARCHAR NOT NULL,
   description VARCHAR NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT now()
 );

@@ -4,9 +4,55 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sign Up</title>
-  <link rel="stylesheet" href="">
+  <% include ../partials/head.ejs %>  
+  <link rel="stylesheet" href="/css/users/new.css">
+  <script src="/js/users/new.js"></script>
 </head>
 <body>
   
+  <% include ../partials/header.ejs %>
+
+  <div id="container">
+    <h1>Sign Up</h1>
+    <div class="form">
+      <input type="text" name="user" placeholder="username">
+      <input type="password" name="pass" placeholder="password">
+      <input type="text" name="image" placeholder="avatar">
+      <select>
+        <option value="" disabled selected>Gender Identity</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="what?">Um</option>
+      </select>      
+      <button class="hide">Next</button>
+    </div>
+    <div class="form">
+      <select>
+        <option value="" disabled selected>Race</option>
+        <option value="nope">Nope</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="latino">Latino</option>
+        <option value="eastAsian">East Asian</option>
+        <option value="southAsian">South Asian</option>
+        <option value="snowflake">Snowflake</option>
+      </select>
+      <select>
+        <option value="" disabled selected>Are you vegan?</option>
+        <option value="vegan">Meat is murder</option>
+        <option value="not">Lol no</option>
+        <option value="eww">I do crossfit</option>
+      </select>
+      <select>
+        <option value="" disabled selected>Fedora guy?</option>
+        <option value="hairy">I have great hair</option>
+        <option value="shaved">I'm shaved</option>
+        <option value="trilby">It's a Tribly</option>
+      </select>
+      <button class="hide">Back</button>
+      <input type="submit" value="Submit">
+    </div>
+  </div>
+
 </body>
 </html>

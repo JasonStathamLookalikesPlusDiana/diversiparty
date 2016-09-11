@@ -13,7 +13,7 @@ router.get('/new', (req,res) => {
 });
 
 router.post('/', createUser, (req,res) => {
-  res.redirect('/parties');
+  res.redirect('/');
 });
 
 // Post route for user to login
