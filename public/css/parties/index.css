@@ -47,6 +47,7 @@ a > section {
 
 section > section {
   padding-left: 10px;
+  width: 200px;
 }
 
 h3:not(:last-child) {

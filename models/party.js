@@ -15,7 +15,7 @@ function getAllParties(req,res,next){
 function getParty(req,res,next){
   function translateParty(party_type){
     let parties = {
-      "College Brochure": {
+      "College Brochure Type Party": {
         "Non-threatening Black Guys": 4,
         "White Women": "No Limit",
         "Asian Women": 4,
@@ -65,7 +65,7 @@ function getParty(req,res,next){
 
   db.one(`SELECT * FROM parties INNER JOIN users on parties.host_id = users.user_id WHERE party_id=$1`,[req.params.id])
     .then( data => {
-      res.party_filter = translateParty("TechCrunch Disrupt");
+      res.party_filter = translateParty(data.category);
       res.row = data;
       next();
     })

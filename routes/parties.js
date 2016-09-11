@@ -18,7 +18,7 @@ router.get('/:id',getParty,(req,res) => {
 })
 
 router.post('/',findUserIDByUsername,createParty,(req,res) => {
-  res.redirect('/parties');
+  res.json({id: res.party_id});
 })
 
 router.post('/:id',joinParty,(req,res) => {

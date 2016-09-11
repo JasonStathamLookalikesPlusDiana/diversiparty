@@ -21,7 +21,7 @@
       method: 'post',
       data: values
     })
-    .then(window.location.href = '/parties')
+    .then(data => window.location.href = `/parties`)
     .error(err => console.log('Error: ',err));
   });
   

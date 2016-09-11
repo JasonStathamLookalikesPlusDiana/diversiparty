@@ -2,6 +2,7 @@
   text-align: center;
   color: #CE93D8;
   margin-bottom: 1em;
+  line-height: 1.5;
 }
 
 section {
@@ -41,4 +42,9 @@ input:last-child {
 
 a {
   padding-bottom: 5vh;
+}
+
+span {
+  font-style: italic;
+  color:#BA68C8;
 }
