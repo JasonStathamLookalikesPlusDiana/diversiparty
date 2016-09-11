@@ -19,17 +19,17 @@ CREATE TABLE parties (
   location VARCHAR NOT NULL,
   party_date VARCHAR NOT NULL,
   party_time VARCHAR NOT NULL,
-  host_id INT REFERENCES users (user_id)
+  host_id INT NOT NULL REFERENCES users (user_id)
 );
 
 CREATE TABLE traits (
   trait_id SERIAL PRIMARY KEY NOT NULL,
   description VARCHAR NOT NULL,
-  user_id INT REFERENCES users(user_id)
+  user_id INT NOT NULL REFERENCES users(user_id)
 );
 
 CREATE TABLE party_users (
   party_user_id SERIAL PRIMARY KEY NOT NULL,
-  user_id INT REFERENCES users(user_id),
-  party_id INT REFERENCES parties(party_id)
+  user_id INT REFERENCES NOT NULL users(user_id),
+  party_id INT REFERENCES NOT NULL parties(party_id)
 );
