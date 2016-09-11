@@ -25,6 +25,8 @@ $(document).ready(function(){
       method: 'POST',
       url: '/users',
       data: data
+    }).then((response) => {
+      window.location.href = '/';
     })
 
   })

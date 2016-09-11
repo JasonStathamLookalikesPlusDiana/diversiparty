@@ -67,7 +67,11 @@ function createUser(req,res,next) {
             req.body.description])
       .then( data => {
         console.log('Successfully added new entry');
-        req.session.user = req.body.username;
+        req.session.user = {
+          name: req.body.user,
+          image: req.body.image,
+          description: req.body.description
+        }
         next();
       })
       .catch( error => {
