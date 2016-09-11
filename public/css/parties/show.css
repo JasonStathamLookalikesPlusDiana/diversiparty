@@ -16,7 +16,7 @@ h1 {
 
 #scroll {
   width: 90%;
-  height: 25vh;
+  height: 23vh;
   margin: 0 auto 3vh auto;
   overflow: hidden;
   overflow-y: scroll;
@@ -24,7 +24,11 @@ h1 {
   border: 1px solid black;
 }
 
-img {
+#scroll h3 {
+  margin-bottom: 1em;
+}
+
+#container img {
   width: 80px;
   height: 80px;
   border-radius: 3px;
@@ -45,26 +49,45 @@ input {
   font-size: 20px;
 }
 
-h3 {
+#container h3 {
   margin: 0.5em;
   text-align: center;
 }
 
-a > section {
-  background-color: #F3E5F5;
+h4 {
+  padding-left: 1em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.filter-type {
+  width: 60%;
+}
+
+h4:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+}
+
+#center {
+  margin: auto;
+  width: 80%;
+  height: auto;
+  background-color: white;
   border-radius: 3px;
-  border: 1px solid #CE93D8;
-  box-sizing: border-box;
 }
 
-section > section {
-  padding-left: 10px;
-}
-
-h3:not(:last-child) {
-  margin-bottom: 4px;
-}
-
-a {
-  text-decoration: none;
+#modal h2 {
+  text-align: center;
+  padding: 1em;
+  line-height: 2;
 }

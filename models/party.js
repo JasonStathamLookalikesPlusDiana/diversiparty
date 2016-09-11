@@ -15,22 +15,57 @@ function getAllParties(req,res,next){
 function getParty(req,res,next){
   function translateParty(party_type){
     let parties = {
-      "College Brochure": "8-guys 8-girls",
-      "Actual College Party": "",
-      "Eastern-European Biker Bar": "",
-      "DnD Basement": "",
-      "Quincenera": "",
-      "Werewolf Bar Mitzvah": "",
-      "Holiday Office Party": "",
-      "Resort Luau": "",
-      "Noon Tea Party": "",
-      "TechCrunch Disrupt": ""
+      "College Brochure": {
+        "Non-threatening Black Guys": 4,
+        "White Women": "No Limit",
+        "Asian Women": 4,
+        "Hispanic Guys": 4
+      },
+      "Actual College Party": {
+        "Asian Guys": 4,
+        "Black Guys": 1,
+        "White Women": "No Limit",        
+        "White Guys": "No Limit"
+      },
+      "Eastern-European Biker Bar": {
+        "Shaved Head White Guys": 40,
+        "Overweight People": 10
+      },
+      "DnD Basement": {
+        "White Guy": "No Limit",
+        "Asian Guys with disapproving parents": 2
+      },
+      "Quincenera": {
+        "Awkward Teenagers": "No Limit",
+        "Uncles with Guayabera Shirts": "No Limit"
+      },
+      "Werewolf Bar Mitzvah": {
+        "Anything Goes": "No Limit"
+      },
+      "Holiday Office Party": {
+        "Employees": "No Limit",
+        "Hot Colleagues": 2
+      },
+      "Resort Luau": {
+        "Tourists": 20,
+        "Unhappy Families": 60
+      },
+      "Noon Tea Party": {
+        "Young Girls": 1,
+        "Stuffed Animals": "No Limit"
+      },
+      "TechCrunch Disrupt": {
+        "White Guys": 80,
+        "Women": "No Limit",
+        "Citizens of the World": "No Limit"
+      }
     }
     return parties[party_type]
   }
+
   db.one(`SELECT * FROM parties INNER JOIN users on parties.host_id = users.user_id WHERE party_id=$1`,[req.params.id])
     .then( data => {
-      res.party_filter = translateParty("College Brochure");
+      res.party_filter = translateParty("TechCrunch Disrupt");
       res.row = data;
       next();
     })
@@ -52,7 +87,6 @@ function createParty(req,res,next){
 }
 
 function joinParty(req,res,next){
-
   next();
 }
 

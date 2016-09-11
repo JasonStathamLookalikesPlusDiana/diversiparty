@@ -22,7 +22,8 @@ router.post('/',createParty,(req,res) => {
 
 router.post('/:id',joinParty,(req,res) => {
   req.session.party[req.params.id] = true;
-  res.redirect(`/parties/${req.params.id}`)
+  res.json({success:true})
+  // res.redirect(`/parties/${req.params.id}`)
 })
 
 

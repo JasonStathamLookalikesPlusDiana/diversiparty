@@ -6,6 +6,7 @@
   <title>DiversiParty!</title>
   <% include ../partials/head.ejs %>
   <link rel="stylesheet" type="text/css" href="/css/parties/show.css">
+  <script src="/js/parties/show.js"></script>
 </head>
 <body>
 
@@ -20,15 +21,36 @@
       <h3><%= party.party_date %> <%= party.party_time %></h3>
 
       <div id="scroll">
-      <h3>Attendees</h3>
-        <%= filter %>
+        <h3>Attendees</h3>
+        <div>
+          <% for(x in filter){ %>
+            <h4 class="filter-type"><%= x %>: </h4>
+            <% let maxNum = parseInt(filter[x]) %>
+            <% if (!maxNum){maxNum = 100 } %>
+            <% let num = Math.floor(Math.random()*maxNum) %>
+            <% if (x==="White Guy"){num = maxNum - Math.round(Math.random())} %>
+            <% if (x==="White Guy" && joined ){num = maxNum} %>
+            <h4><%= num %>/<%= filter[x] %></h4>
+          <% } %>
+        </div>
       </div>  
       
       <form method="post" action="/parties/<%=party.party_id%>">
-        <input type="submit" name="Join the Party!">
+        <% if (joined){ %>
+          <input type="submit" value="You're Going!" disabled>
+        <% } else { %>
+          <input type="hidden" value="<% user.userID %>">
+          <input type="submit" value="Join the Party!">
+        <% } %>
       </form>
 
     </section>
+  </div>
+
+  <div id="modal">
+    <div id="center">
+    <h2></h2>
+    </div>
   </div>
 
   <% include ../partials/footer.ejs %>
