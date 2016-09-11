@@ -1,4 +1,5 @@
 const router        = require('express').Router();
+const { findUserIDByUsername } = require('../models/user');
 const { getAllParties,
         getParty,
         createParty,
@@ -16,8 +17,8 @@ router.get('/:id',getParty,(req,res) => {
   res.render('parties/show',{party: res.row, user: req.session, joined: req.session.party[req.params.id], filter: res.party_filter})
 })
 
-router.post('/',createParty,(req,res) => {
-  res.redirect('/parties')
+router.post('/',findUserIDByUsername,createParty,(req,res) => {
+  res.redirect('/parties');
 })
 
 router.post('/:id',joinParty,(req,res) => {

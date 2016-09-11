@@ -8,20 +8,21 @@
   const submit    = document.querySelector('input[type="submit"]');
 
   submit.addEventListener('click', () => {
-    const values         = {
-                            name: name.value,
-                            location: location.value,
-                            partyType: partyType.value,
-                            date: date.value,
-                            time: time.value
-                           };
-    
-    const requestOptions = { 
-                            method: 'post',
-                            body: values
-                           };
-    fetch('/parties', requestOptions)
-    .catch(err => console.log('Error: ',err));
+    const values = {
+                    name: name.value,
+                    location: location.value,
+                    partyType: partyType.value,
+                    date: date.value,
+                    time: time.value
+                   };
+
+    $.ajax({
+      url: '/parties',
+      method: 'post',
+      data: values
+    })
+    .then(console.log('Successfully created a party!'))
+    .error(err => console.log('Error: ',err));
   });
   
 })();
