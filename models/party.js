@@ -75,10 +75,18 @@ function getParty(req,res,next){
 }
 
 function createParty(req,res,next){
+  console.log(req.body);
   db.none(`INSERT INTO parties
-           (name,location,party_date,party_time,host_id)
-           values ($1,$2,$3,$4,$5)`,
-           [])
+           (name,location,category,party_date,party_time,host_id)
+           values ($1,$2,$3,$4,$5,$6)`,
+           [
+            req.body.name,
+            req.body.location,
+            req.body.partyType,
+            req.body.date,
+            req.body.time,
+            req.session.userID
+          ])
     .then(data => {
       console.log('Successfully created party!');
       next();
@@ -93,4 +101,4 @@ function joinParty(req,res,next){
 module.exports = { getAllParties,
                    getParty,
                    createParty,
-                   joinParty};
+                   joinParty };
