@@ -12,7 +12,7 @@ router.get('/new', (req,res) => {
   res.render('user/new');
 });
 
-router.post('/', createUser, (req,res) => {
+router.post('/', createUser, findUserIDByUsername, (req,res) => {
   res.redirect('/');
 });
 
